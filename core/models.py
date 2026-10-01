@@ -1,0 +1,25 @@
+from django.db import models
+
+# Create your models here.
+
+class Area(models.Model):
+    nome = models.CharField('Nome', max_length=100)
+
+class Publico(models.Model):
+    nome = models.CharField('Nome', max_length=100)
+
+class Curso(models.Model):
+    titulo = models.CharField('Titulo', max_length=200)
+    descricao = models.TextField('Descrição', blank=True, null=True)
+    vagas = models.IntegerField('Vagas')
+    carga_horária = models.IntegerField('Carga Horária')
+    data = models.DateField('Data')
+    area = models.ForeignKey(Area, on_delete=models.PROTECT)
+    publico = models.ManyToManyField(Publico)
+
+'''
+Estamos trabalhando com ORM
+- modelagem objeto-relacional
+- modelar o banco de dados diretamente
+na aplicação através de classes e objetos
+'''
