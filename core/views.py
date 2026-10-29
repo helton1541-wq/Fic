@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Area, Publico, Curso
 from .forms import AreaForm
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
 def inicial(request):
@@ -41,3 +42,19 @@ def area_remover(request, id):
     area = Area.objects.get(pk=id)
     area.delete()
     return redirect('areas')
+
+def autenticar(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('perfil')
+    else:
+        return render(request, 'login.html')
+    
+    return render(request, 'login.html')
+
+def perfil(request):
+    return render(request, 'perfil.html')
