@@ -26,6 +26,7 @@ urlpatterns = [
     path('area_remover/<int:id>', area_remover, name='area_remover'),
     path('admin/', admin.site.urls),
     path('autenticar/', autenticar, name='autenticar'),
+    path('cadastro/', cadastro, name='cadastro'),
     path('desconectar/', desconectar, name='desconectar'),
     path('perfil/', perfil, name='perfil')
 ]
