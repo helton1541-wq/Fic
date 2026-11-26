@@ -1,0 +1,30 @@
+
+ <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">Cursos FICs</a>
+      <nav class="nav">
+        <a href="index.html">Início</a>
+        <a href="cursos.html">Cursos</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <div class="header-actions">
+        {%if not user.is_authenticated %}
+        <a href="{% url 'autenticar' %}" class="btn btn-outline">Login</a>
+        <a href="{% url 'cadastro' %}" class="btn btn-primary">Cadastro</a>
+
+        <a href="{% url 'pefil' %}" class="btn btn-outline">Perfil</a>
+        <a href="{% url 'desconectar' %}" class="btn btn-primary">Sair</a>
+        {%endif%}
+      </div>
+      <button class="hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav">
+      <a href="{% url 'inicial' %}">Início</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="#contato">Contato</a>
+      <a href="{% url 'autenticar' %}">Login</a>
+      <a href="{% url 'cadastro' %}">Cadastro</a>
+    </nav>
+  </header>
